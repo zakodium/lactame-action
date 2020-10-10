@@ -1,0 +1,29 @@
+{
+  "name": "lactame-action",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Push release artifacts to lactame.com",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zakodium/lactame-action.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zakodium/lactame-action/issues"
+  },
+  "homepage": "https://github.com/zakodium/lactame-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "archiver": "^5.0.2",
+    "form-data": "^3.0.0",
+    "got": "^11.7.0"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "all"
+  }
+}

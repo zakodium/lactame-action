@@ -1,0 +1,16 @@
+name: 'documentation.js'
+description: 'Build documentation using documentation.js'
+inputs:
+  token:
+    description: 'Authentication token for the upload'
+    required: true
+  name:
+    description: 'Name of the published library'
+    required: true
+  folder:
+    description: 'Folder that contains the artifacts to push'
+    required: true
+    default: 'dist'
+runs:
+  using: 'node12'
+  main: 'index.js'
