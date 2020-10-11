@@ -1,7 +1,9 @@
 'use strict';
 
+const { createReadStream, createWriteStream } = require('fs');
 const fs = require('fs').promises;
 const path = require('path');
+const pipeline = require('util').promisify(require('stream').pipeline);
 
 const core = require('@actions/core');
 const archiver = require('archiver');
@@ -19,23 +21,23 @@ const folder = core.getInput('folder') || 'dist';
 
   // Create .zip archive to send
   const releaseDir = await fs.mkdtemp('lactame-release-');
+  const releaseZip = `${releaseDir}.zip`;
   await fs.rename(folder, path.join(releaseDir, version));
   const archive = archiver('zip', { zlib: { level: 9 } });
   archive.directory(releaseDir + '/', name);
   archive.finalize();
+  await pipeline(archive, createWriteStream(releaseZip));
 
   // Send .zip archive
   const form = new FormData();
-  form.append('upfile', archive, {
+  form.append('upfile', createReadStream(releaseZip), {
     filename: `${releaseDir}.zip`,
     contentType: 'application/zip',
   });
   form.append('token', token);
-  const response = await got.post(`https://direct.lactame.com/lib/upload.php`, {
+  await got.post(`https://direct.lactame.com/lib/upload.php`, {
     body: form,
   });
-  console.log(response.body);
-  console.log(response.headers);
 
   core.info(
     `Release published to https://www.lactame.com/lib/${name}/${version}/`,
