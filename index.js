@@ -28,7 +28,11 @@ const folder = core.getInput('folder') || 'dist';
   const form = new FormData();
   form.append('upfile', archive);
   form.append('token', token);
-  await got.post(`https://direct.lactame.com/lib/upload.php`, { body: form });
+  const response = await got.post(`https://direct.lactame.com/lib/upload.php`, {
+    body: form,
+  });
+  console.log(response.body);
+  console.log(response.headers);
 
   core.info(
     `Release published to https://www.lactame.com/lib/${name}/${version}/`,
