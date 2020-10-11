@@ -26,7 +26,10 @@ const folder = core.getInput('folder') || 'dist';
 
   // Send .zip archive
   const form = new FormData();
-  form.append('upfile', archive);
+  form.append('upfile', archive, {
+    filename: `${releaseDir}.zip`,
+    contentType: 'application/zip',
+  });
   form.append('token', token);
   const response = await got.post(`https://direct.lactame.com/lib/upload.php`, {
     body: form,
