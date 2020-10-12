@@ -35,9 +35,15 @@ const folder = core.getInput('folder') || 'dist';
     contentType: 'application/zip',
   });
   form.append('token', token);
-  await got.post(`https://direct.lactame.com/lib/upload.php`, {
-    body: form,
-  });
+  try {
+    await got.post(`https://direct.lactame.com/lib/upload.php`, {
+      body: form,
+    });
+  } catch (e) {
+    return core.setFailed(
+      `Post error (${error.response.statusCode} - ${error.response.statusMessage}): ${error.response.body}`,
+    );
+  }
 
   core.info(
     `Release published to https://www.lactame.com/lib/${name}/${version}/`,
