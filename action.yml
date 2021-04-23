@@ -1,16 +1,21 @@
-name: 'documentation.js'
-description: 'Build documentation using documentation.js'
+name: 'lactame'
+description: 'Publish build of a package to www.lactame.com'
 inputs:
   token:
     description: 'Authentication token for the upload'
     required: true
   name:
     description: 'Name of the published library'
-    required: true
+    required: false
+    default: 'name defined in package.json'
   folder:
     description: 'Folder that contains the artifacts to push'
-    required: true
+    required: false
     default: 'dist'
+  version:
+    description: 'Version to use'
+    required: false
+    default: 'version defined in package.json'
 runs:
   using: 'node12'
   main: 'index.js'

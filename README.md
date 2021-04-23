@@ -8,7 +8,9 @@
 
 ### `name`
 
-**Required** Name of the published library.
+Name of the published library.
+
+Defaults to `'name'` that is defined in `package.json`.
 
 ### `folder`
 
