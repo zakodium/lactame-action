@@ -17,7 +17,7 @@ const folder = core.getInput('folder') || 'dist';
 (async () => {
   await checkFolder();
   const packageJson = await getPackageJson();
-  const version = packageJson.version;
+  const version = core.getInput('version') || packageJson.version;
 
   // Create .zip archive to send
   const releaseDir = await fs.mkdtemp('lactame-release-');
