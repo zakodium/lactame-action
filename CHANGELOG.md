@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://www.github.com/zakodium/lactame-action/compare/v1.0.0...v1.1.0) (2021-04-23)
+
+
+### Features
+
+* add default name from package.json ([314be7d](https://www.github.com/zakodium/lactame-action/commit/314be7db936c4fe47c376f41c0f968dc7a640e48))
+
+
+### Bug Fixes
+
+* action parameters description and README ([8c992b6](https://www.github.com/zakodium/lactame-action/commit/8c992b6d2124915ae57aa73c237bc59dbff54485))
+
 ## 1.0.0 (2021-04-23)
 
 
