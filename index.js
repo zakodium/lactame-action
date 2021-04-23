@@ -11,13 +11,13 @@ const got = require('got');
 const FormData = require('form-data');
 
 const token = core.getInput('token', { required: true });
-const name = core.getInput('name', { required: true });
 const folder = core.getInput('folder') || 'dist';
 
 (async () => {
   await checkFolder();
   const packageJson = await getPackageJson();
   const version = core.getInput('version') || packageJson.version;
+  const name = core.getInput('name') || packageJson.name;
 
   // Create .zip archive to send
   const releaseDir = await fs.mkdtemp('lactame-release-');
