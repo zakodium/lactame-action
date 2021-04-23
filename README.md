@@ -12,6 +12,12 @@
 
 ### `folder`
 
-**Required** Folder that contains the artifacts to push.
+Folder that contains the artifacts to push.
 
 Defaults to `'dist'`.
+
+### `version`
+
+Version to use for this publication.
+
+Defaults to `'version'` that is defined in `package.json`. Allows to specify `HEAD` for example to deploy on each commit.
