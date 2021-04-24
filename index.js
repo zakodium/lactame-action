@@ -18,7 +18,8 @@ const folder = core.getInput('folder') || 'dist';
   const packageJson = await getPackageJson();
   const version = core.getInput('version') || packageJson.version;
   const name = core.getInput('name') || packageJson.name;
-
+  core.info('Package name: '+name);
+  
   // Create .zip archive to send
   const releaseDir = await fs.mkdtemp('lactame-release-');
   const releaseZip = `${releaseDir}.zip`;
@@ -36,10 +37,9 @@ const folder = core.getInput('folder') || 'dist';
   });
   form.append('token', token);
   try {
-    const body = await got.post(`https://direct.lactame.com/lib/upload.php`, {
+    await got.post(`https://direct.lactame.com/lib/upload.php`, {
       body: form,
     });
-    core.info(Object.keys(body));
   } catch (error) {
     return core.setFailed(
       `Post error (${error.response.statusCode} - ${error.response.statusMessage}): ${error.response.body}`,
