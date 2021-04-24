@@ -21,6 +21,8 @@ jobs:
           release-type: node
           package-name: ${{ env.PACKAGE_NAME }}
       - uses: actions/checkout@v2
+        # These if statements ensure that a publication only occurs when a new release is created
+        if: ${{ steps.release.outputs.release_created }}
       - name: Tag major and patch versions
         if: ${{ steps.release.outputs.release_created }}
         run: |
