@@ -36,10 +36,10 @@ const folder = core.getInput('folder') || 'dist';
   });
   form.append('token', token);
   try {
-    const {body} = await got.post(`https://direct.lactame.com/lib/upload.php`, {
+    const body = await got.post(`https://direct.lactame.com/lib/upload.php`, {
       body: form,
     });
-    core.info(body.data);
+    core.info(body);
   } catch (error) {
     return core.setFailed(
       `Post error (${error.response.statusCode} - ${error.response.statusMessage}): ${error.response.body}`,
