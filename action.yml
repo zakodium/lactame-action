@@ -7,7 +7,6 @@ inputs:
   name:
     description: 'Name of the published library'
     required: false
-    default: 'name defined in package.json'
   folder:
     description: 'Folder that contains the artifacts to push'
     required: false
@@ -15,7 +14,6 @@ inputs:
   version:
     description: 'Version to use'
     required: false
-    default: 'version defined in package.json'
 runs:
   using: 'node12'
   main: 'index.js'
