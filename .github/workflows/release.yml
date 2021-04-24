@@ -21,12 +21,12 @@ jobs:
           release-type: node
           package-name: ${{ env.PACKAGE_NAME }}
       - uses: actions/checkout@v2
-      - name: tag major and patch versions
+      - name: Tag major and patch versions
         if: ${{ steps.release.outputs.release_created }}
         run: |
           git config user.name zakodium-bot
           git config user.email 72201612+zakodium-bot@users.noreply.github.com
-          git remote add gh-token "https://${{ secrets.BOT_TOKEN}}@github.com/zakodium/lactame-action.git"
+          git remote add gh-token "https://${{ secrets.BOT_TOKEN}}@github.com/${{ github.repository }}.git"
           git tag -d v${{ steps.release.outputs.major }} || true
           git tag -d v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }} || true
           git push origin :v${{ steps.release.outputs.major }} || true
