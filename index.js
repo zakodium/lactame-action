@@ -39,7 +39,7 @@ const folder = core.getInput('folder') || 'dist';
     const body = await got.post(`https://direct.lactame.com/lib/upload.php`, {
       body: form,
     });
-    core.info(body);
+    core.info(Object.keys(body));
   } catch (error) {
     return core.setFailed(
       `Post error (${error.response.statusCode} - ${error.response.statusMessage}): ${error.response.body}`,
