@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://www.github.com/zakodium/lactame-action/compare/v1.1.0...v1.2.0) (2021-04-28)
+
+
+### Features
+
+* deal correction with default version ([43a1d10](https://www.github.com/zakodium/lactame-action/commit/43a1d10b405eccf200def4bbf91627bb5bc4e32a))
+
 ## [1.1.0](https://www.github.com/zakodium/lactame-action/compare/v1.0.0...v1.1.0) (2021-04-23)
 
 
