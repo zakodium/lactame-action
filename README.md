@@ -23,3 +23,7 @@ Defaults to `'dist'`.
 Version to use for this publication.
 
 Defaults to `'version'` that is defined in `package.json`. Allows to specify `HEAD` for example to deploy on each commit.
+
+## Release
+
+Release is done using github actions.
