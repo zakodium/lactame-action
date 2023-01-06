@@ -1,7 +1,7 @@
 {
   "name": "lactame-action",
   "private": true,
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Push release artifacts to lactame.com",
   "main": "index.js",
   "repository": {

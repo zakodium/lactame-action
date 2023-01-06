@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.2.1](https://www.github.com/zakodium/lactame-action/compare/v1.2.0...v1.2.1) (2023-01-06)
+
+
+### Bug Fixes
+
+* update to node16 ([1c3124a](https://www.github.com/zakodium/lactame-action/commit/1c3124aec0a6b2040ed79a30d72612ba388c834c))
+
 ## [1.2.0](https://www.github.com/zakodium/lactame-action/compare/v1.1.0...v1.2.0) (2021-04-28)
 
 
