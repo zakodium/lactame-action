@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.0](https://github.com/zakodium/lactame-action/compare/v1.2.0...v1.3.0) (2023-09-06)
+
+
+### Features
+
+* update deps and switch runtime to node20 ([41696a0](https://github.com/zakodium/lactame-action/commit/41696a051008cfe1d7ca47260637175fc18c9270))
+
+
+### Bug Fixes
+
+* update to node16 ([1c3124a](https://github.com/zakodium/lactame-action/commit/1c3124aec0a6b2040ed79a30d72612ba388c834c))
+
 ## [1.2.0](https://www.github.com/zakodium/lactame-action/compare/v1.1.0...v1.2.0) (2021-04-28)
 
 
