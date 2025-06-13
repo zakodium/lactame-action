@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/zakodium/lactame-action/compare/v1.4.0...v1.4.1) (2025-06-13)
+
+
+### Bug Fixes
+
+* update dependencies ([0fde1f6](https://github.com/zakodium/lactame-action/commit/0fde1f62ea0306344e20394bbb313bebfd09af87))
+
 ## [1.4.0](https://github.com/zakodium/lactame-action/compare/v1.3.0...v1.4.0) (2023-12-18)
 
 
