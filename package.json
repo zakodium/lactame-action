@@ -16,18 +16,12 @@
   "homepage": "https://github.com/zakodium/lactame-action#readme",
   "dependencies": {
     "@actions/core": "^1.11.1",
-    "archiver": "^7.0.1",
-    "form-data": "^4.0.3",
-    "got": "^14.4.7"
+    "archiver": "^7.0.1"
   },
-  "prettier": {
-    "arrowParens": "always",
-    "semi": true,
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "all"
+  "devDependencies": {
+    "prettier": "^3.6.2"
   },
   "volta": {
-    "node": "20.19.2"
+    "node": "24.5.0"
   }
 }

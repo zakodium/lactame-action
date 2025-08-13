@@ -26,4 +26,4 @@ Defaults to `'version'` that is defined in `package.json`. Allows to specify `HE
 
 ## Release
 
-Release is done using github actions.
+Release is done using GitHub Actions.

@@ -1,12 +1,10 @@
-import { createReadStream, createWriteStream } from 'node:fs';
-import fs from 'node:fs/promises';
-import path from 'node:path';
+import { createWriteStream, openAsBlob } from 'node:fs';
+import { mkdtemp, readdir, readFile, rename } from 'node:fs/promises';
+import { join } from 'node:path';
 import { pipeline } from 'node:stream/promises';
 
 import core from '@actions/core';
 import archiver from 'archiver';
-import got from 'got';
-import FormData from 'form-data';
 
 const token = core.getInput('token', { required: true });
 const folder = core.getInput('folder') || 'dist';
@@ -18,9 +16,9 @@ const name = core.getInput('name') || packageJson.name;
 core.info('Package name: ' + name);
 
 // Create .zip archive to send
-const releaseDir = await fs.mkdtemp('lactame-release-');
+const releaseDir = await mkdtemp('lactame-release-');
 const releaseZip = `${releaseDir}.zip`;
-await fs.rename(folder, path.join(releaseDir, version));
+await rename(folder, join(releaseDir, version));
 const archive = archiver('zip', { zlib: { level: 9 } });
 archive.directory(releaseDir + '/', name);
 archive.finalize();
@@ -28,28 +26,27 @@ await pipeline(archive, createWriteStream(releaseZip));
 
 // Send .zip archive
 const form = new FormData();
-form.append('upfile', createReadStream(releaseZip), {
-  filename: `${releaseDir}.zip`,
-  contentType: 'application/zip',
-});
+const releaseZipBlob = await openAsBlob(releaseZip);
+form.append('upfile', releaseZipBlob, `${releaseDir}.zip`);
 form.append('token', token);
-try {
-  await got.post(`https://direct.lactame.com/lib/upload.php`, {
-    body: form,
-  });
 
+const res = await fetch(`https://direct.lactame.com/lib/upload.php`, {
+  method: 'POST',
+  body: form,
+});
+
+if (res.ok) {
   core.info(
     `Release published to https://www.lactame.com/lib/${name}/${version}/`,
   );
-} catch (error) {
-  core.setFailed(
-    `Post error (${error.response.statusCode} - ${error.response.statusMessage}): ${error.response.body}`,
-  );
+} else {
+  const text = await res.text();
+  core.setFailed('Upload failed: ' + text);
 }
 
 async function checkFolder() {
   try {
-    const contents = await fs.readdir(folder);
+    const contents = await readdir(folder);
     if (contents.length === 0) {
       throw new Error(`Folder "${folder}" is empty`);
     }
@@ -62,5 +59,5 @@ async function checkFolder() {
 }
 
 async function getPackageJson() {
-  return JSON.parse(await fs.readFile('package.json', 'utf-8'));
+  return JSON.parse(await readFile('package.json', 'utf-8'));
 }
