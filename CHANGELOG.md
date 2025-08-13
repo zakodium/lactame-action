@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/zakodium/lactame-action/compare/v1.4.1...v1.5.0) (2025-08-13)
+
+
+### Features
+
+* update dependencies and Node.js to v24 ([e72a44b](https://github.com/zakodium/lactame-action/commit/e72a44b95cbe6ecaa82bce2548cfe666a5e1cd40))
+
 ## [1.4.1](https://github.com/zakodium/lactame-action/compare/v1.4.0...v1.4.1) (2025-06-13)
 
 
